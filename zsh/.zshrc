@@ -129,7 +129,16 @@ alias d="kitten diff"
 export PATH="$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+  source "$NVM_DIR/nvm.sh"
+  [[ ! -s "$NVM_DIR/bash_completion" ]] || source "$NVM_DIR/bash_completion"
+elif command -v brew >/dev/null 2>&1; then
+  nvm_brew_prefix="$(brew --prefix nvm 2>/dev/null)"
+  if [[ -s "$nvm_brew_prefix/nvm.sh" ]]; then
+    source "$nvm_brew_prefix/nvm.sh"
+    [[ ! -s "$nvm_brew_prefix/etc/bash_completion.d/nvm" ]] || source "$nvm_brew_prefix/etc/bash_completion.d/nvm"
+  fi
+  unset nvm_brew_prefix
+fi
 
 [[ ! -f "$HOME/.zshrc.local" ]] || source "$HOME/.zshrc.local"

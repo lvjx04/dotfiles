@@ -7,4 +7,3 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 
 # Private toolchains:
 export PATH="$HOME/Tools/dotnet:$PATH"
-export PATH="$HOME/Tools/node/node-v23.9.0-darwin-arm64/bin:$PATH"

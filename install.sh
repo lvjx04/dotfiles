@@ -32,6 +32,7 @@ eval "$(brew shellenv)"
 
 printf 'Installing Homebrew dependencies...\n'
 HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="${repo_root}/Brewfile"
+mkdir -p "${HOME}/.nvm"
 
 if ! command -v stow >/dev/null 2>&1; then
   printf 'GNU Stow is required but was not found after brew bundle.\n' >&2
