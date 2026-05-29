@@ -14,8 +14,7 @@
 **/*secret*
 **/*credentials*
 
-# Kitty runtime/session state
-**/.config/kitty/session.conf
+# Kitty runtime state
 **/.config/kitty/kitty.conf.bak
 
 # Local overrides live outside stow packages by default
