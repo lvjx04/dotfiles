@@ -4,7 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${repo_root}"
 
-default_packages=(zsh kitty git nvim fish)
+default_packages=(zsh kitty nvim ssh)
 if [[ $# -gt 0 ]]; then
   packages=("$@")
 else

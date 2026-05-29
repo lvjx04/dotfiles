@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 
-brew "git"
 brew "stow"
 brew "zsh"
 brew "nvim"

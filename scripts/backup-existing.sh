@@ -8,7 +8,7 @@ backup_root="${DOTFILES_BACKUP_DIR:-${target_home}/.dotfiles-backup/${timestamp}
 
 packages=("$@")
 if [[ ${#packages[@]} -eq 0 ]]; then
-  packages=(zsh kitty git nvim fish)
+  packages=(zsh kitty nvim ssh)
 fi
 
 mkdir -p "${backup_root}"

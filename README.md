@@ -17,10 +17,8 @@ cd ~/Work/dotfiles
 
 - `zsh`: zsh, Oh My Zsh and Powerlevel10k config.
 - `kitty`: kitty terminal config.
-- `git`: Git config and global ignore rules.
 - `nvim`: Neovim config.
-- `fish`: Fish config.
-- `ssh`: SSH config example only.
+- `ssh`: SSH host config.
 
 Machine-specific settings belong in `~/.zshrc.local` and `~/.zprofile.local`.
 Private keys, tokens and generated session files should never be committed.
