@@ -10,8 +10,9 @@ cd ~/Work/dotfiles
 ./install.sh
 ```
 
-`install.sh` installs Homebrew dependencies, backs up existing files to
-`~/.dotfiles-backup/`, then links configs into `$HOME`.
+`install.sh` does not install apps. It checks for required tools, backs up
+existing files to `~/.dotfiles-backup/`, then links configs into `$HOME`.
+Use `Brewfile` only as a reference for manual installation.
 
 ## Contents
 

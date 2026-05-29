@@ -16,27 +16,22 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
-if ! command -v xcode-select >/dev/null 2>&1 || ! xcode-select -p >/dev/null 2>&1; then
-  printf 'Installing Xcode Command Line Tools...\n'
-  xcode-select --install || true
-  printf 'Re-run ./install.sh after Command Line Tools finish installing.\n'
-  exit 1
-fi
-
-if ! command -v brew >/dev/null 2>&1; then
-  printf 'Homebrew is not installed. Install it from https://brew.sh, then re-run ./install.sh.\n' >&2
-  exit 1
-fi
-
-eval "$(brew shellenv)"
-
-printf 'Installing Homebrew dependencies...\n'
-HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file="${repo_root}/Brewfile"
-mkdir -p "${HOME}/.nvm"
-
 if ! command -v stow >/dev/null 2>&1; then
-  printf 'GNU Stow is required but was not found after brew bundle.\n' >&2
+  printf 'GNU Stow is required. Install it manually, then re-run ./install.sh.\n' >&2
+  printf 'Suggested command: brew install stow\n' >&2
   exit 1
+fi
+
+missing=()
+for command_name in zsh kitty nvim; do
+  if ! command -v "${command_name}" >/dev/null 2>&1; then
+    missing+=("${command_name}")
+  fi
+done
+
+if [[ ${#missing[@]} -gt 0 ]]; then
+  printf 'Warning: missing optional commands: %s\n' "${missing[*]}" >&2
+  printf 'Install them manually if you want the corresponding configs to be useful.\n' >&2
 fi
 
 printf 'Backing up existing files...\n'
@@ -47,6 +42,7 @@ stow --dir="${repo_root}" --target="${HOME}" --verbose "${packages[@]}"
 
 printf '\nDone.\n'
 printf 'Optional next steps:\n'
+printf '  - Install dependencies manually. See Brewfile for a reference list.\n'
 printf '  - Install Oh My Zsh if missing: https://ohmyz.sh\n'
 printf '  - Install Powerlevel10k under ~/.oh-my-zsh/custom/themes if missing.\n'
 printf '  - Install zsh-autosuggestions and zsh-syntax-highlighting plugins if missing.\n'
