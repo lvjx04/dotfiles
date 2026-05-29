@@ -1,0 +1,10 @@
+# Machine-specific login shell settings.
+# Copy this file to ~/.zprofile.local and edit it locally.
+
+export HOMEBREW_PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+# Private toolchains:
+export PATH="$HOME/Tools/dotnet:$PATH"
+export PATH="$HOME/Tools/node/node-v23.9.0-darwin-arm64/bin:$PATH"

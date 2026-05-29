@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Dotfiles backups and local-only data
+.dotfiles-backup/
+*.bak
+*.backup
+*.old
+
+# Secrets and machine-local files
+**/.ssh/id_*
+**/.ssh/known_hosts*
+**/*token*
+**/*secret*
+**/*credentials*
+
+# Kitty runtime/session state
+**/.config/kitty/session.conf
+**/.config/kitty/kitty.conf.bak
+
+# Local overrides live outside stow packages by default
+local/*.local
